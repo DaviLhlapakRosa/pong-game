@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/styles.css">
+    <title>Pong Game</title>
+</head>
+<body>
+    <canvas id="screen" width="200" height="100"></canvas>
+
+    <script type="module">
+        import gameCore from './core/game.js';
+
+        const screen = document.querySelector("#screen").getContext('2d');
+
+        var game = gameCore(screen);
+
+        game.start();
+    </script>
+</body>
+</html>
