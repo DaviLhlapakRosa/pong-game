@@ -8,18 +8,19 @@ export default class Player {
         this.color = color;
         this.speed = speed;
 
-        this.draw = function(screen){
+        function draw(screen){
             screen.fillStyle = this.color;
             screen.fillRect(this.x,this.y,this.width,this.height);
         }
 
-        this.move = function(command){
+        function move(command){
+
             const acceptedMoves = {
-                ArrowUp() {
-                    this.y -= this.speed;
+                ArrowUp(player) {
+                    player.y -= player.speed;
                 },
-                ArrowDown(){
-                    this.y += this.speed;
+                ArrowDown(player){
+                    player.y += player.speed;
                 }
             }
 
@@ -27,7 +28,7 @@ export default class Player {
             const moveFunction = acceptedMoves[keyPressed];
            
             if(moveFunction){
-                moveFunction();
+                moveFunction(this);
             }
         }
     }

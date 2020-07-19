@@ -7,24 +7,28 @@ export default function createGame(screen){
 
     var state = {
         runnig: false,
+        player: new Player(5,5,5,10,"#FFF", 10)
     };
 
-    const player = new Player(5,5,5,10,"#FFF", 10);
 
     function start(){
         state.runnig = true;
         
-        keyboard.subscribe(player.move);
+        keyboard.subscribe(state.player.move);
 
         runnig();
     }
 
     function runnig(){
-        player.draw(screen);
+
+        screen.clearRect(0,0,200,100);
+
+        state.player.draw(screen);
 
         requestAnimationFrame(runnig);
     }
 
+    
     return {
         state,
         start,
